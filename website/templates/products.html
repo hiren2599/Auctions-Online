@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/products.css">
+</head>
+<body>
+{% now "Y-m-d-H-i-s" as todays_date %}
+<div class="container-fluid">
+    <div id="myCarousel" class="carousel slide" data-interval="false">
+    {% load custom_tags %}
+        
+        {% for auction in auctions %}
+        {% if forloop.counter0|divisibleby:'4' %}
+            {% if forloop.counter0 != 0 %}
+            </div>
+            {% endif %}
+        <div class="carousel-inner row w-100 mx-auto">
+            {% if auctions|length == 1 %} <div class="carousel-item col-md-12 active">
+            {% elif auctions|length == 2 %} <div class="carousel-item col-md-6 active">
+            {% elif auctions|length == 3 %} <div class="carousel-item col-md-4 active">
+            {% else %} <div class="carousel-item col-md-3 active">
+            {% endif %}
+        {% else %}
+            {% if auctions|length == 1 %} <div class="carousel-item col-md-12">
+            {% elif auctions|length == 2 %} <div class="carousel-item col-md-6">
+            {% elif auctions|length == 3 %} <div class="carousel-item col-md-4">
+            {% else %} <div class="carousel-item col-md-3">
+            {% endif %}
+        {% endif %}
+            <div class="card">
+                <img class="card-img-top img-fluid" src='/media/{{ auction.product_id.image }}' alt="Card image cap">
+                <div class="card-body">
+                    <div id="item_name">
+                        <h4 class="card-title text-center">{{ auction.product_id.title }}</h4><hr>
+                    </div>
+                    <p class="card-text">{{ auction.product_id.description }}</p>
+                    {% if todays_date > auction.time_starting|date:'Y-m-d-H-i-s' %}
+                    <h4 class="card-title text-center">Rs: {{auction.base_price}}</h4>
+                    {% endif %}
+                    <p class="card-text"><small class="text-muted"> 
+                    {% if todays_date > auction.time_starting|date:'Y-m-d-H-i-s' %}
+                    Auction ends in: {{ auction.time_ending|time_left }}
+                    {% else %}
+                    Auction starts: {{ auction.time_starting|date:'d-m-Y H:i:s' }}
+                    {% endif %}
+                    
+                    </small></p>
+                    
+                    {% if todays_date > auction.time_starting|date:'Y-m-d-H-i-s' %}
+                    <div>
+                        <!-- BID NOW BUTTON -->
+                        <button type="button" class="btn btn-primary bid_now_button" onclick="location.href='/website/bid/{{auction.id}}'">Bid Now</button>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <!-- WATCH BUTTON -->
+                        <button type="button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}'">
+                        {% if watchlist %}
+                            {% if watchlist|search:auction.id%}
+                            Unwatch
+                            {% else %}
+                            Watch
+                            {% endif %}
+                        {% else %}
+                            Watch
+                        {% endif %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
