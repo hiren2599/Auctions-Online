@@ -35,7 +35,7 @@ class Product(models.Model):
 	description = models.CharField(max_length=500)
 	quantity = models.IntegerField()
 	category = models.CharField(
-		max_length=2,
+		max_length=3,
 		choices=CATEGORIES
 	)
 	date_posted = models.DateTimeField(auto_now_add=True, blank=True)
