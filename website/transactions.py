@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def increase_bid(user, auction):
     """
-    Removes €1.0 from user.
+    Removes 1.0 Ruppee from user.
     Creates a Bid record
     Increases the auction's number of bids
     

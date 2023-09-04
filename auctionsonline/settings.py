@@ -122,3 +122,8 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Adding to address unwanted migrations in the future
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
