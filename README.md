@@ -1,8 +1,11 @@
 # Steps for setting up
 
 1. Create Virtual Environments
-Refer: https://docs.python.org/3/library/venv.html
-
+Refer More Details: https://docs.python.org/3/library/venv.html
+```
+python3 -m venv venv
+source venv/bin/activate
+```
 2. Install Dependency libraries for the project
 ```
 pip install -r requirements.txt
