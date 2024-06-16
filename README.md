@@ -1,3 +1,8 @@
+# Application Overview
+
+# Home Page without Login
+![home page without login|https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/homePageWithoutLogin.png]
+
 # Steps for setting up
 
 1. Create Virtual Environments
