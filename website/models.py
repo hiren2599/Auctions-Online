@@ -39,8 +39,8 @@ class Product(models.Model):
 		choices=CATEGORIES
 	)
 	date_posted = models.DateTimeField(auto_now_add=True, blank=True)
-	status = models.CharField(choices=STATUS_CHOICES, max_length=10, db_index=True, null=True)
-	winner = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+	status = models.CharField(choices=STATUS_CHOICES, max_length=10, db_index=True, null=True, blank=True)
+	winner = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
 	def __str__(self):
 		return "ID:" + str(self.pk) + " " + self.title
 
