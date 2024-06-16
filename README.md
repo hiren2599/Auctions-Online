@@ -1,6 +1,32 @@
-# Django Tutorial
+# Steps for setting up
 
-Following are the steps involved in the creation of this django project:-
+1. Create Virtual Environments
+Refer More Details: https://docs.python.org/3/library/venv.html
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+2. Install Dependency libraries for the project
+```
+pip install -r requirements.txt
+```
+3. Make migrations
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+4. Create an Admin(Superuser) User
+```
+python manage.py createsuperuser
+```
+5. Final checks
+```
+python manage.py runserver
+```
+
+# Django Features Used
+
+Following are the steps involved in the creation of this Django project:-
 
 1 - Installation<br>
 2 - First Steps<br>
