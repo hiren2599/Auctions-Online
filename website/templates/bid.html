@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <td><small>Current bit:</small></td>
-                        <td><br>IND </b>{{stats.1}}RS</b></td>
+                        <td>Rs. </b>{{stats.1}}</b></td>
                         <td><small>[ {{ auction.number_of_bids }} bids ]</small></td>
                     </tr>
                 </tbody>
@@ -52,11 +52,13 @@
             </div>
         </div>
 
-        <div id="comments">
-            {% for c in stats.4 %}
-            {{ c.user_id.username }} : {{ c.message }}<br>
-            {% endfor %}
-        </div>
+        {% if stats.4|length != 0 %}
+            <div id="comments">
+                {% for c in stats.4 %}
+                {{ c.user_id.username }} : {{ c.message }}<br>
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <form method="post" action="/website/bid/{{auction.id}}/comment/">{% csrf_token %}
         <div class="form-group">

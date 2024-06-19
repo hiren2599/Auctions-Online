@@ -97,7 +97,7 @@ def bid_page(request, auction_id):
             for item in w:
                 a = Auction.objects.filter(id=item.auction_id.id)
                 watchlist = list(chain(watchlist, a))
-            
+            print(stats)
             return render(request, 'bid.html',
             {
                 'auction': auction[0], 
@@ -215,7 +215,7 @@ def watchlist(request, auction_id):
             else:
                 w.delete()
             
-            return index(request)
+            return watchlist_page(request)
     except KeyError:
         return index(request)
      

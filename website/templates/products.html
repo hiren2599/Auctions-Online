@@ -34,7 +34,7 @@
                         <h4 class="card-title text-center" style="text-overflow: ellipsis">{{ auction.product_id.title }}</h4><hr>
                     </div>
                     <p class="card-text">{{ auction.product_id.description }}</p>
-                    <h4 class="card-title text-center">Rs: {{auction.base_price}}</h4>
+                    <h4 class="card-title text-center">Rs. {{auction.base_price}}</h4>
                     <p class="card-text"><small class="text-muted"> 
                     {% if todays_date > auction.time_starting|date:'Y-m-d-H-i-s' %}
                     Auction ends in: {{ auction.time_ending|time_left }}
