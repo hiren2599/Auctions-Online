@@ -54,17 +54,21 @@
                     </div>
                     <div>
                         <!-- WATCH BUTTON -->
-                        <button type="button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}'">
                         {% if watchlist %}
                             {% if watchlist|search:auction.id%}
-                            Unwatch
+                                <button type="button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}/false'">
+                                    Unwatch
+                                </button>
                             {% else %}
-                            Watch
+                                <button type="button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}/true'">
+                                    Watch
+                                </button>
                             {% endif %}
                         {% else %}
-                            Watch
+                            <button type="button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}/true'">
+                                Watch
+                            </button>
                         {% endif %}
-                        </button>
                     </div>
                 </div>
             </div>

@@ -193,7 +193,7 @@ def register_page(request):
     """
     return render(request, 'register.html')
 
-def watchlist(request, auction_id):
+def watchlist(request, auction_id, operation):
     """
     Adds the auction to the user's watchlist.
     
@@ -207,15 +207,16 @@ def watchlist(request, auction_id):
             auction = Auction.objects.filter(id=auction_id)
             
             w = Watchlist.objects.filter(auction_id=auction_id)
-            if not w:
-                watchlist_item = Watchlist()
-                watchlist_item.auction_id = auction[0]
-                watchlist_item.user_id = user[0]
-                watchlist_item.save()
+            if operation == 'true':
+                if not w:
+                    watchlist_item = Watchlist()
+                    watchlist_item.auction_id = auction[0]
+                    watchlist_item.user_id = user[0]
+                    watchlist_item.save()
             else:
                 w.delete()
             
-            return watchlist_page(request)
+            return index(request)
     except KeyError:
         return index(request)
      

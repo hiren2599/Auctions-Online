@@ -37,18 +37,22 @@
             </div>
             {% endif %}
             <div>
-                <button type="button" id="w_button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}'">
-                    {% load custom_tags %}
-                    {% if watchlist %}
-                        {% if watchlist|search:auction.id%}
+                {% load custom_tags %}
+                {% if watchlist %}
+                    {% if watchlist|search:auction.id%}
+                        <button type="button" id="w_button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}/false'">
                             Unwatch
-                        {% else %}
-                            Watch
-                        {% endif %}
+                        </button>
                     {% else %}
-                        Watch
+                        <button type="button" id="w_button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}/true'">
+                            Watch
+                        </button>
                     {% endif %}
-                </button>
+                {% else %}
+                    <button type="button" id="w_button" class="btn btn-outline-primary watch_button" onclick="location.href='/website/watchlist/{{auction.id}}/true'">
+                        Watch
+                    </button>
+                {% endif %}
             </div>
         </div>
 
