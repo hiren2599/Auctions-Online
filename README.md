@@ -1,8 +1,3 @@
-# Application Overview
-
-# Home Page without Login
-![home page without login](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/homePageWithoutLogin.png)
-
 # Steps for setting up
 
 1. Create Virtual Environments
@@ -28,6 +23,40 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
+6. Admin Operations
+You will be able to access the Django Admin on 127.0.0.0:8000/admin(considering you are not changing the port).
+7. Non-Admin Operations
+You will be able to access the Auction Application on 127.0.0.0:8000/website(considering you are not changing the port).
+
+# Application Overview
+
+## Home Page without Login
+![home page without login](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/homePageWithoutLogin.png)
+
+## Register New User Page
+![register user page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/registerNewUserPage.png)
+
+## Login User To Auction Application
+![login user page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/loginPopup.png)
+
+## Home Page with Login
+![home page with login](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/homePageWithLogin.png)
+
+## Bid Page
+![bid page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/BidPage.png)
+
+## Result Page
+![result page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/resultPage.png)
+
+## Add Balance Page
+![add balance page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/addBalancePage.png)
+
+## Login Admin User to Admin Panel
+![login admin user page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/adminLoginPage.png)
+
+##  Admin Panel Home Page
+![admin panel home page](https://github.com/hiren2599/Auctions-Online/blob/master/imagesForREADME/adminOperationsPage.png)
+
 
 # Django Features Used
 
