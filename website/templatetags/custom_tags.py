@@ -47,31 +47,22 @@ def time_left(value):
         Remaining time in minutes and seconds
     """
     t = value - timezone.now()
-    days, seconds = t.days, t.seconds
-    hours = days * 24 + seconds // 3600
-    minutes = (seconds % 3600) // 60
-    seconds = seconds % 60
-    st = str(minutes) + "m " + str(seconds) + "s"
-    return st
-
-@register.filter(name="current_price")
-def current_price(value):
-    """
-    Calculates the current value
-    of the item depending the
-    number of bids.
-
-    Parameters
-    ----------
-    value : IntegerField
-        Number of Bids.
+    dateString = ""
+    days = t.days
+    if(days>0):
+        dateString = dateString + str(days) + "D "
     
-    Returns
-    ------
-    string
-        Current value with two decimals.
-    """
-    current_cost = 0.20 + (value.number_of_bids * 0.20)
-    current_cost = "%0.2f" % current_cost
-    return current_cost
+    seconds = t.seconds
+    hours = seconds // (60*60)
+    seconds = seconds % (60*60)
+    if(hours>0 or len(dateString) != 0):
+        dateString = dateString + str(hours) + "h "
 
+    mintues = seconds // 60
+    seconds = seconds % 60
+    if(mintues>0 or len(dateString) != 0):
+        dateString = dateString + str(mintues) + "m "
+    if(seconds>0 or len(dateString) != 0):
+        dateString = dateString + str(seconds) + "s "
+
+    return dateString
