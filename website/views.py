@@ -340,7 +340,7 @@ def filter_auctions(request, category):
             ).order_by('time_starting')
         
     try:
-        if request.user.is_authenticated:
+        if request.session['username']:
             auctions = Auction.objects.filter(time_ending__gte=datetime.now()).order_by('time_starting')
             user = User.objects.filter(username=request.session['username'])
             
@@ -351,8 +351,10 @@ def filter_auctions(request, category):
                 watchlist = list(chain(watchlist, a))
             print("\n\n\n\n\n\n\n\n",f_auctions)
             return render(request, 'index.html', {'auctions': f_auctions, 'user': user[0], 'watchlist': watchlist})
+        else:
+            return render(request, 'index.html', {'auctions': f_auctions})
     except:
-        return render(request, 'index.html', {'auctions': tel_auctions})
+        return render(request, 'index.html', {'auctions': f_auctions})
     
     return index(request)
 
